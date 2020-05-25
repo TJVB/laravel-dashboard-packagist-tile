@@ -1,0 +1,69 @@
+# set the default docker image
+image: php:7.4
+
+stages:
+  - prepare # prepare the cache
+  - check # check the codestyles
+  - test
+
+.before_nocov: &before_nocov
+  before_script:
+    # Install git, the php image doesn't have installed
+    - apt-get update -yqq
+    - apt-get install git zip zlib1g-dev -yqq
+
+.before_pcov: &before_pcov
+  before_script:
+    # Install git, the php image doesn't have installed
+    - apt-get update -yqq
+    - apt-get install git zip zlib1g-dev -yqq
+    # Install pcov
+    - pecl install pcov
+    # Enable pcov
+    - docker-php-ext-enable pcov
+
+
+prepare_cache:
+  <<: *before_nocov
+  stage: prepare
+  script:
+    # Install composer
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar validate
+    - php composer.phar install
+  # we use this artifact for all the jobs
+  artifacts:
+    name: "vendor"
+    paths:
+      - vendor/*
+
+lint:
+  stage: check
+  script:
+    # lint recursive
+    - find app/ -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+  dependencies: []
+
+phpcs:
+  <<: *before_nocov
+  stage: check
+  script:
+    - vendor/bin/phpcs
+  dependencies:
+    - prepare_cache
+
+phpmd:
+  image: phpqa/phpmd
+  stage: check
+  script:
+    - phpmd src/ text phpmd.xml.dist
+  dependencies: []
+
+test:
+  <<: *before_pcov
+  stage: test
+  image: php:7.4
+  script:
+    - vendor/bin/phpunit --coverage-text --colors=never
+  dependencies:
+    - prepare_cache
