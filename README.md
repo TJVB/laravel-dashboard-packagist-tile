@@ -2,16 +2,15 @@
 
 [![Latest Stable Version](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/v/stable)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tjvb/laravel-dashboard-packagist-tile.svg?style=flat-square)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
-[![pipeline status](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/pipeline.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/commits/master)
-[![coverage report](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/coverage.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/commits/master)
+[![pipeline status](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/pipeline.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/pipelines)
+[![coverage report](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/coverage.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/pipelines)
 [![License](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/license)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
 
 
-A friendly explanation of what your tile does.
 
-![Packagist data tile screenshot](./docs/images/packagist-data-screenshot/jpg)
+![Packagist data tile screenshot](/docs/images/packagist-data-screenshot.jpg)
 
-This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-dashboard) to show packagist statistics about the package you like to see.
+This tile can be used on [the Laravel Dashboard](https://docs.spatie.be/laravel-dashboard) to show packagist statistics about the package you like to see. You can hide abandoned package and the totals for the packages. It also support pagination.
 
 ## Installation
 
