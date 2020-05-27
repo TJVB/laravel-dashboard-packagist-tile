@@ -54,6 +54,7 @@ return [
 ```
 
 To load the data from packagist there are two commands to schedule. The FetchPackageDataCommand gets the statistics for the package. This is cached for twelve hours so it isn't usefull to get it more then twice a day. See the [Packagist API documentation](https://packagist.org/apidoc#get-package-data)  
+
 The second command is to get the packages for the vendors that you have configured. If you create a lot of packages like the great people from [Spatie](https://spatie.be/) it can be usefull to automate it. Else it is preferable to run `php artisan dashboard:fetch-vendor-packages-from-packagist` after you publish a new package on packagist. 
 
 ```php
@@ -108,7 +109,7 @@ If you discover any security related issues, please email info@tjvb.nl instead o
 
 ## Credits
 
-- [Tobias van Beek](https://github.com/tvbeek)
+- [Tobias van Beek](https://tjvb.nl/about)
 - [All Contributors](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/graphs/master)
 
 ## Thanks to
