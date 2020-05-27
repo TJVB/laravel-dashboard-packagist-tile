@@ -41,7 +41,7 @@ lint:
   stage: check
   script:
     # lint recursive
-    - find app/ -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+    - find src/ -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
   dependencies: []
 
 phpcs:
