@@ -59,6 +59,19 @@ phpmd:
     - phpmd src/ text phpmd.xml.dist
   dependencies: []
 
+test_lowest:
+  <<: *before_pcov
+  stage: test
+  image: php:7.4
+  script:
+    # Install composer
+    - rm -f composer.lock
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar update --prefer-lowest
+    - vendor/bin/phpunit --coverage-text --colors=never
+  dependencies:
+    - prepare_cache
+
 test:
   <<: *before_pcov
   stage: test
