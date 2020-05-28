@@ -15,6 +15,7 @@ class PackagistTileServiceProvider extends ServiceProvider
      * @var array
      */
     public array $bindings = [
+        \TJVB\PackagistTile\Contracts\PackagistService::class => PackagistService::class,
         \TJVB\PackagistTile\Contracts\PackagistStore::class => PackagistStore::class,
     ];
     public function boot()

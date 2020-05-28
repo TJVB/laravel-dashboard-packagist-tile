@@ -7,7 +7,7 @@ namespace TJVB\PackagistTile;
 use Illuminate\Support\Arr;
 use Spatie\Packagist\PackagistClient;
 
-class PackagistService
+class PackagistService implements \TJVB\PackagistTile\Contracts\PackagistService
 {
     /**
      * @var PackagistClient
@@ -19,7 +19,7 @@ class PackagistService
         $this->packagist = $packagist;
     }
 
-    public function packagesByVendor($vendor): ?array
+    public function packagesByVendor($vendor): array
     {
         return Arr::get($this->packagist->getPackagesNamesByVendor($vendor) ?? [], 'packageNames', []);
     }

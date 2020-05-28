@@ -11,9 +11,9 @@ class PackagistStore implements \TJVB\PackagistTile\Contracts\PackagistStore
 {
     private Tile $tile;
 
-    public function __construct()
+    public function __construct(Tile $tile)
     {
-        $this->tile = Tile::firstOrCreateForName("packagist");
+        $this->tile = $tile::firstOrCreateForName('packagist');
     }
 
     public function setVendorPackages(array $vendorPackages): self

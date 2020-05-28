@@ -30,6 +30,5 @@ class PackagistStoreFixture implements PackagistStore
     public function getPackagesData(): Collection
     {
         return new Collection($this->packagesData);
-        // TODO: Implement getPackagesData() method.
     }
 }

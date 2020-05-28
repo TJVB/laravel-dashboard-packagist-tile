@@ -58,25 +58,25 @@ class PackageData
     public static function fromPackagistMetaData(array $data): PackageData
     {
         return new self(
-            (string) Arr::get($data, 'package.name', 0),
+            (string) Arr::get($data, 'package.name', ''),
             (int) Arr::get($data, 'package.downloads.daily', 0),
             (int) Arr::get($data, 'package.downloads.monthly', 0),
             (int) Arr::get($data, 'package.downloads.total', 0),
             (int) Arr::get($data, 'package.favers', 0),
             (int) Arr::get($data, 'package.github_stars', 0),
-            (bool) Arr::get($data, 'package.abandoned', 0)
+            (bool) Arr::get($data, 'package.abandoned', false)
         );
     }
     public static function fromArray(array $data): PackageData
     {
         return new self(
-            (string) Arr::get($data, 'name', 0),
+            (string) Arr::get($data, 'name', ''),
             (int) Arr::get($data, 'downloadsDaily', 0),
             (int) Arr::get($data, 'downloadsMonthly', 0),
             (int) Arr::get($data, 'downloadsTotal', 0),
             (int) Arr::get($data, 'favers', 0),
             (int) Arr::get($data, 'github_stars', 0),
-            (bool) Arr::get($data, 'abandoned', false)
+            (bool) Arr::get($data, 'abandoned', true)
         );
     }
 

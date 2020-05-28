@@ -6,6 +6,8 @@ namespace TJVB\PackagistTile;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository;
+use TJVB\PackagistTile\Contracts\PackagistService;
+use TJVB\PackagistTile\Contracts\PackagistStore;
 
 class FetchVendorPackagesCommand extends Command
 {
@@ -13,7 +15,7 @@ class FetchVendorPackagesCommand extends Command
 
     protected $description = 'Fetch vendor packages for the packagist tile';
 
-    public function handle(PackagistService $packagistService, Repository $config): int
+    public function handle(PackagistService $packagistService, Repository $config, PackagistStore $packagistStore): int
     {
         $this->info('Fetching vendor packages from packagist ...');
         $vendors = $config->get('dashboard.tiles.packagist.vendors', []);
@@ -26,7 +28,7 @@ class FetchVendorPackagesCommand extends Command
         $this->output->progressFinish();
         $vendorPackages = array_merge(...$vendorPackages);
 
-        PackagistStore::make()->setVendorPackages($vendorPackages);
+        $packagistStore->setVendorPackages($vendorPackages);
 
         $this->info('All done!');
         return 0;
