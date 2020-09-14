@@ -14,11 +14,11 @@ class PackagistTileComponent extends Component
     use WithPagination;
 
     /** @var string */
-    public $position;
+    public string $position;
 
     public $perPage;
 
-    public function mount(string $position = 'a1', $perPage = 10)
+    public function mount(string $position = 'a1', $perPage = 10): void
     {
         $this->position = $position;
         $this->perPage = $perPage;
@@ -40,7 +40,7 @@ class PackagistTileComponent extends Component
         return $view;
     }
 
-    public function paginationView()
+    public function paginationView(): string
     {
         return 'dashboard-packagist-tile::pagination';
     }
@@ -64,16 +64,12 @@ class PackagistTileComponent extends Component
                     switch (config('dashboard.tiles.packagist.sort')) {
                         case 'name':
                             return strcasecmp($packageDataLeft->getName(), $packageDataRight->getName());
-                            break;
                         case 'daily':
                             return $packageDataLeft->getDailyDownloads() - $packageDataRight->getDailyDownloads();
-                            break;
                         case 'monthly':
                             return $packageDataLeft->getMonthlyDownloads() - $packageDataRight->getMonthlyDownloads();
-                            break;
                         case 'total':
                             return $packageDataLeft->getTotalDownloads() - $packageDataRight->getTotalDownloads();
-                            break;
                     }
                 });
         })->when(config('dashboard.tiles.packagist.reverse'), static function ($packages) {

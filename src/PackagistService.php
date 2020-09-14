@@ -12,7 +12,7 @@ class PackagistService implements \TJVB\PackagistTile\Contracts\PackagistService
     /**
      * @var PackagistClient
      */
-    private $packagist;
+    private PackagistClient $packagist;
 
     public function __construct(PackagistClient $packagist)
     {

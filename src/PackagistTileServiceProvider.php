@@ -18,7 +18,7 @@ class PackagistTileServiceProvider extends ServiceProvider
         \TJVB\PackagistTile\Contracts\PackagistService::class => PackagistService::class,
         \TJVB\PackagistTile\Contracts\PackagistStore::class => PackagistStore::class,
     ];
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
