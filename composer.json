@@ -16,14 +16,14 @@
     ],
     "require": {
         "php": "^7.4",
-        "illuminate/support": "^7.0",
-        "livewire/livewire": "^1.0",
+        "illuminate/support": "^7.0||^8.0",
+        "livewire/livewire": "^1.0||^2.0",
         "spatie/laravel-dashboard": "^1.0",
         "spatie/packagist-api": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9",
-        "orchestra/testbench": "^5.2",
+        "orchestra/testbench": "^5.2||^6.0",
         "phpunit/phpunit": "^9.0",
         "squizlabs/php_codesniffer": "^3.5"
     },
