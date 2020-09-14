@@ -1,3 +1,6 @@
 /vendor/
 /build/
 /composer.lock
+/phpcs.xml
+/phpmd.xml
+/phpunit.xml
