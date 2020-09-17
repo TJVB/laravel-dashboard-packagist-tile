@@ -3,6 +3,8 @@
 All notable changes to `tjvb/laravel-dashboard-packagist-tile` will be documented in this file
 
 ## Unreleased
+
+## 1.2.0 - 2020-09-17
 ### Added
 - Support for Livewire 2
 - Support for Laravel 8
