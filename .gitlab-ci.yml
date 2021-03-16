@@ -68,12 +68,10 @@ test_lowest:
     - rm -f composer.lock
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar update --prefer-lowest
-    - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
-    - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
+    - vendor/bin/phpunit --coverage-text --colors=never --log-junit=phpunitresult/junit.xml
   artifacts:
     reports:
       junit: phpunitresult/junit.xml
-      cobertura: phpunitresult/cobertura-coverage.xml
   dependencies:
     - prepare_cache
 
