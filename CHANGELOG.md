@@ -3,6 +3,9 @@
 All notable changes to `tjvb/laravel-dashboard-packagist-tile` will be documented in this file
 
 ## Unreleased
+## 1.3.0 - 2021-03-21
+### Added
+- Support for PHP8
 
 ## 1.2.0 - 2020-09-17
 ### Added
