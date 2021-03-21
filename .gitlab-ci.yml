@@ -59,7 +59,7 @@ phpmd:
     - phpmd src/ text phpmd.xml.dist
   dependencies: []
 
-test_lowest:
+test_lowest_php74:
   <<: *before_pcov
   stage: test
   image: php:7.4
@@ -75,10 +75,41 @@ test_lowest:
   dependencies:
     - prepare_cache
 
-test:
+
+test_lowest_php80:
+  <<: *before_pcov
+  stage: test
+  image: php:8.0
+  script:
+    # Install composer
+    - rm -f composer.lock
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar update --prefer-lowest
+    - vendor/bin/phpunit --coverage-text --colors=never --log-junit=phpunitresult/junit.xml
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+  dependencies:
+    - prepare_cache
+
+test_php74:
   <<: *before_pcov
   stage: test
   image: php:7.4
+  script:
+    - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
+    - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+      cobertura: phpunitresult/cobertura-coverage.xml
+  dependencies:
+    - prepare_cache
+
+test_php80:
+  <<: *before_pcov
+  stage: test
+  image: php:8.0
   script:
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
