@@ -4,6 +4,7 @@ All notable changes to `tjvb/laravel-dashboard-packagist-tile` will be documente
 
 ## Unreleased
 
+## 1.4.0 - 2021-12-06
 ### Added
 - Add PHP 8.1 support
 
