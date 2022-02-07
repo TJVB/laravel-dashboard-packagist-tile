@@ -1,36 +1,16 @@
 # set the default docker image
-image: php:7.4
+image: registry.gitlab.com/tjvb/phpimages:php74
 
 stages:
   - prepare # prepare the cache
-  - check # check the codestyles
+  - check # check the code styles
   - test
 
-.before_nocov: &before_nocov
-  before_script:
-    # Install git, the php image doesn't have installed
-    - apt-get update -yqq
-    - apt-get install git zip zlib1g-dev -yqq
-
-.before_pcov: &before_pcov
-  before_script:
-    # Install git, the php image doesn't have installed
-    - apt-get update -yqq
-    - apt-get install git zip zlib1g-dev -yqq
-    # Install pcov
-    - pecl install pcov
-    # Enable pcov
-    - docker-php-ext-enable pcov
-
-
 prepare_cache:
-  <<: *before_nocov
   stage: prepare
   script:
-    # Install composer
-    - curl -sS https://getcomposer.org/installer | php
-    - php composer.phar validate
-    - php composer.phar install
+    - composer validate
+    - composer install
   # we use this artifact for all the jobs
   artifacts:
     name: "vendor"
@@ -45,7 +25,6 @@ lint:
   dependencies: []
 
 phpcs:
-  <<: *before_nocov
   stage: check
   script:
     - vendor/bin/phpcs
@@ -60,14 +39,11 @@ phpmd:
   dependencies: []
 
 test_lowest:
-  <<: *before_pcov
   stage: test
-  image: php:7.4
   script:
     # Install composer
     - rm -f composer.lock
-    - curl -sS https://getcomposer.org/installer | php
-    - php composer.phar update --prefer-lowest
+    - composer update --prefer-lowest
     - vendor/bin/phpunit --coverage-text --colors=never --log-junit=phpunitresult/junit.xml
   artifacts:
     reports:
@@ -76,9 +52,7 @@ test_lowest:
     - prepare_cache
 
 test_php74:
-  <<: *before_pcov
   stage: test
-  image: php:7.4
   script:
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
@@ -89,11 +63,11 @@ test_php74:
   dependencies:
     - prepare_cache
 
-test_php80:
-  <<: *before_pcov
+test_php80_laravel7:
   stage: test
-  image: php:8.0
+  image: registry.gitlab.com/tjvb/phpimages:php80
   script:
+    - composer require --dev orchestra/testbench=^5.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
@@ -103,12 +77,53 @@ test_php80:
   dependencies:
     - prepare_cache
 
-
-test_php81:
-  <<: *before_pcov
+test_php80_laravel8:
   stage: test
-  image: php:8.1
+  image: registry.gitlab.com/tjvb/phpimages:php80
   script:
+    - composer require --dev orchestra/testbench=^6.0
+    - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
+    - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+      cobertura: phpunitresult/cobertura-coverage.xml
+  dependencies:
+    - prepare_cache
+
+test_php80_laravel9:
+  stage: test
+  image: registry.gitlab.com/tjvb/phpimages:php80
+  script:
+    - composer require --dev orchestra/testbench=^7.0
+    - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
+    - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+      cobertura: phpunitresult/cobertura-coverage.xml
+  dependencies:
+    - prepare_cache
+
+test_php81_laravel8:
+  stage: test
+  image: registry.gitlab.com/tjvb/phpimages:php81
+  script:
+    - composer require --dev orchestra/testbench=^6.0
+    - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
+    - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+      cobertura: phpunitresult/cobertura-coverage.xml
+  dependencies:
+    - prepare_cache
+
+test_php81_laravel9:
+  stage: test
+  image: registry.gitlab.com/tjvb/phpimages:php81
+  script:
+    - composer require --dev orchestra/testbench=^7.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
