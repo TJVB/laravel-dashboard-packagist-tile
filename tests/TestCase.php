@@ -13,7 +13,6 @@ use TJVB\PackagistTile\PackagistTileServiceProvider;
  */
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-
     public const FIXTURES_PATH = __DIR__ . '/_fixtures/';
 
     /**

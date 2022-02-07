@@ -6,7 +6,6 @@ use Illuminate\Support\Arr;
 
 class TileFixture extends \Spatie\Dashboard\Models\Tile
 {
-
     public $data = [];
 
     public static $tiles = [];
