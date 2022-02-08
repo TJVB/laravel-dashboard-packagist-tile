@@ -8,7 +8,6 @@ use TJVB\PackagistTile\Tests\_fixtures\TileFixture;
 
 class PackagistStoreTest extends TestCase
 {
-
     /**
      * @return void
      *

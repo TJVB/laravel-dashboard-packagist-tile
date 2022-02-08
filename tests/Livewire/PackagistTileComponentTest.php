@@ -11,7 +11,6 @@ use TJVB\PackagistTile\Tests\TestCase;
 
 class PackagistTileComponentTest extends TestCase
 {
-
     /**
      * @return void
      *
