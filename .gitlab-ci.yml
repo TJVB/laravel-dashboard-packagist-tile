@@ -67,7 +67,7 @@ test_php80_laravel7:
   stage: test
   image: registry.gitlab.com/tjvb/phpimages:php80
   script:
-    - composer require --dev orchestra/testbench=^5.0
+    - composer  require -w --dev orchestra/testbench=^5.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
@@ -81,7 +81,7 @@ test_php80_laravel8:
   stage: test
   image: registry.gitlab.com/tjvb/phpimages:php80
   script:
-    - composer require --dev orchestra/testbench=^6.0
+    - composer  require -w --dev orchestra/testbench=^6.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
@@ -95,7 +95,7 @@ test_php80_laravel9:
   stage: test
   image: registry.gitlab.com/tjvb/phpimages:php80
   script:
-    - composer require --dev orchestra/testbench=^7.0
+    - composer require -w --dev orchestra/testbench=^7.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
@@ -109,7 +109,7 @@ test_php81_laravel8:
   stage: test
   image: registry.gitlab.com/tjvb/phpimages:php81
   script:
-    - composer require --dev orchestra/testbench=^6.0
+    - composer require -w --dev orchestra/testbench=^6.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
@@ -123,7 +123,7 @@ test_php81_laravel9:
   stage: test
   image: registry.gitlab.com/tjvb/phpimages:php81
   script:
-    - composer require --dev orchestra/testbench=^7.0
+    - composer require -w --dev orchestra/testbench=^7.0
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   artifacts:
