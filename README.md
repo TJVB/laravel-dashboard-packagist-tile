@@ -83,6 +83,14 @@ The packages are paginated, by default a page has a maximum of 10 packages. This
 </x-dashboard>
 ```
 
+## Customizing the view
+
+If you want to customize the view used to render this tile, run this command:
+
+```bash
+php artisan vendor:publish --provider="TJVB\PackagistTile\PackagistTileServiceProvider" --tag="dashboard-packagist-views"
+```
+
 ## Testing
 
 ``` bash
