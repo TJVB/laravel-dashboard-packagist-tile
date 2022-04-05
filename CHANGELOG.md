@@ -4,7 +4,11 @@ All notable changes to `tjvb/laravel-dashboard-packagist-tile` will be documente
 
 ## Unreleased
 
-## 1.5.0 - 2022-02-8
+## 1.6.0 - 2022-04-05
+### Added
+- Add support for dark mode in the default views.
+
+## 1.5.0 - 2022-02-08
 ### Added
 - Add Laravel 9 support
 
