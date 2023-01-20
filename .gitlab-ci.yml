@@ -1,6 +1,9 @@
 # set the default docker image
 image: registry.gitlab.com/tjvb/phpimages:php74
 
+default:
+  interruptible: true
+
 stages:
   - prepare # prepare the cache
   - check # check the code styles
