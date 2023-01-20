@@ -22,6 +22,7 @@ lint:
   script:
     # lint recursive
     - find src/ -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+  needs: []
   dependencies: []
 
 phpcs:
@@ -38,24 +39,39 @@ phpmd:
     - phpmd src/ text phpmd.xml.dist
   dependencies: []
 
+test_lowest:
+  stage: test
+  script:
+    # Install composer
+    - rm -f composer.lock
+    - composer update --prefer-lowest
+    - vendor/bin/phpunit --coverage-text --colors=never --log-junit=phpunitresult/junit.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    reports:
+      junit: phpunitresult/junit.xml
+  needs:
+    - prepare_cache
+  dependencies:
+    - prepare_cache
 
 test:
   stage: test
   parallel:
     matrix:
       - LARAVEL: 7
-        TESTBENCH: ^5
+        TESTBENCH: 5
         PHP:
           - 74
       - LARAVEL: 8
-        TESTBENCH: ^6
+        TESTBENCH: 6
         PHP:
           - 74
           - 80
           - 81
           - 82
       - LARAVEL: 9
-        TESTBENCH: ^7
+        TESTBENCH: 7
         PHP:
           - 80
           - 81
@@ -72,5 +88,7 @@ test:
       coverage_report:
         coverage_format: cobertura
         path: phpunitresult/cobertura-coverage.xml
+  needs:
+    - prepare_cache
   dependencies:
     - prepare_cache
