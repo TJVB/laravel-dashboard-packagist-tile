@@ -90,7 +90,7 @@ test:
           - 82
   image: registry.gitlab.com/tjvb/phpimages:php$PHP
   script:
-    - composer  require -w --dev orchestra/testbench=^$TESTBENCH
+    - composer require -w --dev orchestra/testbench=^$TESTBENCH
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
