@@ -4,6 +4,8 @@ All notable changes to `tjvb/laravel-dashboard-packagist-tile` will be documente
 
 ## Unreleased
 
+## 1.7.0 - 2023-02-14
+
 ### Added
 - Add Laravel 10 support.
 
