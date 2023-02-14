@@ -32,15 +32,19 @@ phpcs:
   stage: check
   script:
     - vendor/bin/phpcs
+  needs:
+    - prepare_cache
   dependencies:
     - prepare_cache
 
 phpmd:
-  image: phpqa/phpmd
   stage: check
   script:
-    - phpmd src/ text phpmd.xml.dist
-  dependencies: []
+    - vendor/bin/phpmd src/ text phpmd.xml.dist
+  needs:
+    - prepare_cache
+  dependencies:
+    - prepare_cache
 
 test_lowest:
   stage: test
@@ -79,9 +83,14 @@ test:
           - 80
           - 81
           - 82
+      - LARAVEL: 10
+        TESTBENCH: 8
+        PHP:
+          - 81
+          - 82
   image: registry.gitlab.com/tjvb/phpimages:php$PHP
   script:
-    - composer  require -w --dev orchestra/testbench=^$TESTBENCH
+    - composer require -w --dev orchestra/testbench=^$TESTBENCH
     - vendor/bin/phpunit --coverage-text --colors=never --coverage-cobertura=phpunitresult/cobertura-coverage.xml --log-junit=phpunitresult/junit.xml
     - sed -i 's~ filename="~ filename="src/~' phpunitresult/cobertura-coverage.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
