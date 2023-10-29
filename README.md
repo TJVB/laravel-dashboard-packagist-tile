@@ -1,8 +1,23 @@
 # Show packagist downloads in a tile on Spatie Laravel downloads
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/tjvb/laravel-dashboard-packagist-tile.svg?style=flat-square)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
-[![pipeline status](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/pipeline.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/pipelines)
-[![coverage report](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/coverage.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/pipelines)
+
+[![Latest Stable Version](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/v)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
+[![Pipeline status](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/pipeline.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/pipelines?page=1&scope=all&ref=master)
+[![Coverage report](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/badges/master/coverage.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/pipelines?page=1&scope=all&ref=master)
+[![Tested on PHP 7.4 to 8.2](https://img.shields.io/badge/Tested%20on-PHP%207.4%20|%208.0%20|%208.1%20|%208.2-brightgreen.svg?maxAge=2419200)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/pipelines?page=1&scope=all&ref=master)
+[![Tested on Laravel 9 to 10](https://img.shields.io/badge/Tested%20on-Laravel%207%20|%208%20|%209%20|%2010-brightgreen.svg?maxAge=2419200)](https://gitlab.com/tjvb/laravel-mail-catchall/-/pipelines?page=1&scope=all&ref=master)
+[![Latest Unstable Version](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/v/unstable)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
+
+
+[![PHP Version Require](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/require/php)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
+[![Laravel Version Require](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/require/illuminate/support)](https://packagist.org/packages/tjvb/laravel-mail-catchall)
+[![Livewire Version Require](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/require/livewire/livewire)](https://packagist.org/packages/tjvb/laravel-mail-catchall)
+[![PHPMD](https://img.shields.io/badge/PHPMD-checked-brightgreen.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/blob/master/phpmd.xml.dist)
+[![PHPCS](https://img.shields.io/badge/PHPCS-PSR12-brightgreen.svg)](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/blob/master/phpcs.xml.dist)
+
+
+[![License](https://poser.pugx.org/tjvb/laravel-dashboard-packagist-tile/license)](https://packagist.org/packages/tjvb/laravel-dashboard-packagist-tile)
+
 
 ![Packagist data tile screenshot](/docs/images/packagist-data-screenshot.jpg)
 

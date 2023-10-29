@@ -70,8 +70,31 @@
         }
     },
     "scripts": {
-        "format": "vendor/bin/phpcbf",
+        "analyse": [
+            "@phpmd"
+        ],
+        "analyze": "@analyse",
+        "check": [
+            "@cs-fix",
+            "@test-coverage",
+            "@analyse"
+        ],
+        "cs": "vendor/bin/phpcs",
+        "cs-fix": "vendor/bin/phpcbf",
+        "format": "@cs-fix",
+        "phpmd": "vendor/bin/phpmd src/ text phpmd.xml.dist",
         "test": "vendor/bin/phpunit --no-coverage",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html build/coverage"
+    },
+    "scripts-descriptions": {
+        "analyse": "Run the analyse steps (PHPMD)",
+        "analyze": "See analyse",
+        "check": "Runs @analyse, @cs-fix, @test-coverage and @infection.",
+        "cs": "Check the codestyle with ecs.",
+        "cs-fix": "Check the codestyle with ecs and if possible fix the found issues.",
+        "phpmd": "Analyse the code with PHPMD",
+        "phpstan": "Analyse the code with PHPStan.",
+        "test": "Run the PHPUnit tests without coverage.",
+        "test-coverage": "Run the PHPUnit tests with coverage."
     }
 }

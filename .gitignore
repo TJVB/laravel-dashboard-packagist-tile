@@ -1,7 +1,8 @@
-/vendor/
+.phpunit.result.cache
 /build/
-/composer.lock
-/phpcs.xml
-/phpmd.xml
-/phpunit.xml
-/.phpunit.result.cache
+/vendor/
+composer.lock
+phpcs.xml
+phpmd.xml
+phpstan.neon
+phpunit.xml
