@@ -1,6 +1,6 @@
-# Maintainer(s) needed
+# Maintainer(s) needed !!!
 
-**See: [https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/issues/10](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/issues/10)**
+**This package will not be updated without new maintainers, see: [https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/issues/10](https://gitlab.com/tjvb/laravel-dashboard-packagist-tile/-/issues/10)**
 
 # Show packagist downloads in a tile on Spatie Laravel downloads
 

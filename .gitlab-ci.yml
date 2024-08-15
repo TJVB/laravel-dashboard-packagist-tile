@@ -13,7 +13,7 @@ prepare_cache:
   stage: prepare
   script:
     - composer validate
-    - composer install
+    - COMPOSER_MEMORY_LIMIT=-1 composer update
   # we use this artifact for all the jobs
   artifacts:
     name: "vendor"
@@ -51,7 +51,7 @@ test_lowest:
   script:
     # Install composer
     - rm -f composer.lock
-    - composer update --prefer-lowest
+    - COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-lowest
     - vendor/bin/phpunit --coverage-text --colors=never --log-junit=phpunitresult/junit.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
   artifacts:

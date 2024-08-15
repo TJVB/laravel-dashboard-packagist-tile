@@ -93,7 +93,6 @@
         "cs": "Check the codestyle with ecs.",
         "cs-fix": "Check the codestyle with ecs and if possible fix the found issues.",
         "phpmd": "Analyse the code with PHPMD",
-        "phpstan": "Analyse the code with PHPStan.",
         "test": "Run the PHPUnit tests without coverage.",
         "test-coverage": "Run the PHPUnit tests with coverage."
     }
